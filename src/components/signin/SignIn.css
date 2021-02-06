@@ -62,3 +62,7 @@
 .create-account-link:hover {
   text-decoration: none;
 }
+
+.error {
+  margin-top: 10px;
+}

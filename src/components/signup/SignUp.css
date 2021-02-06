@@ -28,6 +28,7 @@
 .form-field input {
   display: block;
   width: 100%;
+  padding-left: 5px;
   margin-top: 8px;
   font-size: 16px;
   line-height: 40px;
@@ -59,4 +60,8 @@
 
 .account-link:hover {
   text-decoration: none;
+}
+
+.error {
+  margin-top: 10px;
 }
