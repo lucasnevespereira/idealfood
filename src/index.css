@@ -4,12 +4,17 @@
   margin: 0;
   padding: 0;
   font-family: "Lato", sans-serif;
-  color: #222831;
 }
 
 :root {
   --green: #c4c65a;
   --white: #fbfdff;
+  --red: #c95a3a;
+  --yellow: #ebd37a;
+}
+
+a {
+  text-decoration: none !important;
 }
 
 .app {
@@ -24,4 +29,40 @@
 
 .main {
   min-height: 75vh;
+}
+
+.btn {
+  min-width: 120px;
+  text-align: center;
+  margin: 30px auto 10px;
+  font-size: 18px;
+  line-height: 40px;
+  border-radius: 5px;
+  border: none;
+  transition: all 0.3s ease-out;
+}
+
+.btn-primary {
+  background-color: var(--green);
+  color: var(--white);
+}
+
+.btn-primary:hover {
+  background-color: var(--white);
+  border: 1px solid var(--white);
+  color: var(--green);
+}
+
+.btn:hover {
+  cursor: pointer;
+}
+
+.loader-wrapper {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.MuiCircularProgress-svg {
+  color: var(--red);
 }

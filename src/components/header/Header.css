@@ -1,6 +1,6 @@
 .header {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   border: 1px solid #f9f9f9;
 }
@@ -12,4 +12,5 @@
 
 .header__icon {
   padding: 20px;
+  font-size: 40px;
 }
