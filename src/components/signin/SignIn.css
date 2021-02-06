@@ -1,0 +1,64 @@
+.signin {
+  padding: 10px;
+}
+
+.signin h2 {
+  text-align: center;
+}
+
+.form {
+  overflow: hidden;
+  min-width: 260px;
+  margin-top: 30px;
+  border-radius: 5px;
+  transform-origin: top;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.form-field {
+  padding: 10px;
+}
+
+.form-field label {
+  font-size: 14px;
+  color: #a1b4b4;
+}
+
+.form-field input {
+  display: block;
+  width: 100%;
+  margin-top: 8px;
+  font-size: 16px;
+  line-height: 40px;
+  color: #3b4465;
+  background: #eef9fe;
+  border: 1px solid #cddbef;
+  border-radius: 2px;
+  outline: var(--green);
+  padding-left: 5px;
+}
+
+.btn-login {
+  color: var(--white);
+  background: var(--green);
+  min-width: 120px;
+  margin: 30px auto 10px;
+  font-size: 18px;
+  line-height: 40px;
+  border-radius: 5px;
+  border: none;
+  transition: all 0.3s ease-out;
+}
+
+.create-account-link {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 14px;
+  color: #3b4465;
+}
+
+.create-account-link:hover {
+  text-decoration: none;
+}
