@@ -24,3 +24,18 @@ p b {
   background-color: var(--red);
   color: var(--white);
 }
+
+@media screen and (min-width: 992px) {
+  .main {
+    margin-top: 100px;
+  }
+
+  .btn-primary {
+    width: 50%;
+  }
+
+  .profile-wrapper {
+    width: 50%;
+    margin: auto;
+  }
+}

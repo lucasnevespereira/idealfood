@@ -102,3 +102,11 @@
 .error {
   margin-top: 10px;
 }
+
+/* MEDIA QUERIES */
+@media screen and (min-width: 992px) {
+  .signin {
+    width: 50%;
+    margin: auto;
+  }
+}

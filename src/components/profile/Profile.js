@@ -30,7 +30,7 @@ const Profile = () => {
     <div className="app">
       <Header></Header>
       <div className="main">
-        <Card>
+        <Card className="profile-wrapper">
           <h2>Profile</h2>
           {loading ? (
             <div className="loader-wrapper">
