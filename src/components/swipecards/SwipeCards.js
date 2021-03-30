@@ -16,6 +16,10 @@ const SwipeCards = ({ places }) => {
   //   },
   // ]);
 
+  useEffect(() => {
+    console.log(places);
+  }, []);
+
   return (
     <div>
       <div className="tinderCards__cardsContainer">
@@ -28,12 +32,19 @@ const SwipeCards = ({ places }) => {
             <div
               className="card"
               style={{
-                // backgroundImage: `url(${data.url})`,
-                backgroundColor: "black",
+                backgroundImage: `url(https://images.pexels.com/photos/735869/pexels-photo-735869.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500)`,
+                backgroundColor: "#eee",
               }}
             >
-              <p>Test</p>
-              <h3>{data.name}</h3>
+              <div>
+                <h2>{data.name}</h2>
+                {data.location && (
+                  <p>
+                    {data.location.city}, {data.location.state}
+                  </p>
+                )}
+                <p></p>
+              </div>
             </div>
           </TinderCard>
         ))}

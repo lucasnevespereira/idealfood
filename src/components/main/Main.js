@@ -19,7 +19,7 @@ const Main = () => {
     navigator.geolocation.getCurrentPosition(
       (position) => {
         console.log(position.coords);
-        let url = `https://api.foursquare.com/v2/venues/search?client_id=${process.env.REACT_APP_FOURSQUARE_CLIENT_ID}&client_secret=${process.env.REACT_APP_FOURSQUARE_CLIENT_SECRET}&v=20180323&limit=10&ll=${position.coords.latitude},${position.coords.longitude}&query=food`;
+        let url = `https://api.foursquare.com/v2/venues/search?client_id=${process.env.REACT_APP_FOURSQUARE_CLIENT_ID}&client_secret=${process.env.REACT_APP_FOURSQUARE_CLIENT_SECRET}&v=20180323&limit=10&ll=${position.coords.latitude},${position.coords.longitude}&limit=50&categoryId=4d4b7105d754a06374d81259`;
         axios
           .get(url)
           .then((res) => {
@@ -27,18 +27,18 @@ const Main = () => {
             res.data.response.venues.forEach((venue) => {
               places.push(venue);
               // REQUEST TO FETCH VENUE PHOTO
-              //   axios
-              //     .get(
-              //       ` https://api.foursquare.com/v2/venues/${venue.id}/photos?client_id=${process.env.REACT_APP_FOURSQUARE_CLIENT_ID}&client_secret=${process.env.REACT_APP_FOURSQUARE_CLIENT_SECRET}&v=20180323`
-              //     )
-              //     .then((result) => {
-              //       result.data.response.photos.items.map((item) => {
-              //         let suffix = item.suffix;
-              //         let prefix = item.prefix;
-              //         const photoUrl = suffix + prefix;
-              //         console.log(photoUrl);
-              //       });
+              // axios
+              //   .get(
+              //     ` https://api.foursquare.com/v2/venues/${venue.id}/photos?client_id=${process.env.REACT_APP_FOURSQUARE_CLIENT_ID}&client_secret=${process.env.REACT_APP_FOURSQUARE_CLIENT_SECRET}&v=20180323`
+              //   )
+              //   .then((result) => {
+              //     result.data.response.photos.items.map((item) => {
+              //       let suffix = item.suffix;
+              //       let prefix = item.prefix;
+              //       const photoUrl = suffix + prefix;
+              //       console.log(photoUrl);
               //     });
+              //   });
             });
 
             console.log("After => ", places);
