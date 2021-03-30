@@ -1,18 +1,22 @@
 import "./SwipeCards.css";
 import React from "react";
 import TinderCard from "react-tinder-card";
-import { db } from "../../firebase";
+import { db, auth } from "../../firebase";
 
 const SwipeCards = ({ places }) => {
   const handleRightSwipe = (data) => {
     console.log("Right Data", data);
     db.collection("places")
-      .add(data)
+      .add({ userId: auth.currentUser.uid, data })
       .then(() => {
         console.log("Data added");
       })
       .catch((error) => console.log(error));
   };
+
+  React.useEffect(() => {
+    console.log("USER => ", auth.currentUser.uid);
+  }, []);
 
   return (
     <div>

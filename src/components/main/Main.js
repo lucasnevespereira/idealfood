@@ -24,22 +24,24 @@ const Main = () => {
           .get(url)
           .then((res) => {
             console.log("Before => ", places);
-            res.data.response.venues.forEach((venue) => {
-              places.push(venue);
-              // REQUEST TO FETCH VENUE PHOTO
-              // axios
-              //   .get(
-              //     ` https://api.foursquare.com/v2/venues/${venue.id}/photos?client_id=${process.env.REACT_APP_FOURSQUARE_CLIENT_ID}&client_secret=${process.env.REACT_APP_FOURSQUARE_CLIENT_SECRET}&v=20180323`
-              //   )
-              //   .then((result) => {
-              //     result.data.response.photos.items.map((item) => {
-              //       let suffix = item.suffix;
-              //       let prefix = item.prefix;
-              //       const photoUrl = suffix + prefix;
-              //       console.log(photoUrl);
-              //     });
-              //   });
-            });
+            res.data.response.venues
+              .filter((item) => item.id)
+              .forEach((venue) => {
+                places.push(venue);
+                // REQUEST TO FETCH VENUE PHOTO
+                // axios
+                //   .get(
+                //     ` https://api.foursquare.com/v2/venues/${venue.id}/photos?client_id=${process.env.REACT_APP_FOURSQUARE_CLIENT_ID}&client_secret=${process.env.REACT_APP_FOURSQUARE_CLIENT_SECRET}&v=20180323`
+                //   )
+                //   .then((result) => {
+                //     result.data.response.photos.items.map((item) => {
+                //       let suffix = item.suffix;
+                //       let prefix = item.prefix;
+                //       const photoUrl = suffix + prefix;
+                //       console.log(photoUrl);
+                //     });
+                //   });
+              });
 
             console.log("After => ", places);
             setData(places);

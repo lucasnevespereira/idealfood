@@ -3,14 +3,16 @@ import Footer from "../footer/Footer";
 import Header from "../header/Header";
 import Loader from "../loader/Loader";
 import "./List.css";
-import { db } from "../../firebase";
+import { db, auth } from "../../firebase";
 
 const List = () => {
   const [loading, setLoading] = useState(true);
   const [places, setPlaces] = useState([]);
 
   const fetchPlaces = async () => {
-    const response = db.collection("places");
+    const response = db
+      .collection("places")
+      .where("userId", "==", `${auth.currentUser.uid}`);
     await response
       .get()
       .then((docs) => {
@@ -37,22 +39,43 @@ const List = () => {
           places &&
           places.map((place) => {
             return (
-              <div className="list-card" key={place.id}>
-                <h3>{place.name}</h3>
-                <p>{place.location.address}</p>
-                <p>{place.location.city}</p>
+              <div className="list-card" key={place.data.id}>
+                <h3>{place.data.name}</h3>
+                <p>{place.data.location.address}</p>
+                <p>{place.data.location.city}</p>
                 <hr />
-                {place.categories.icon && (
+                {place.data.categories.icon && (
                   <img
                     src={
-                      place.categories.icon.prefix +
-                      place.categories.icon.suffix
+                      place.data.categories.icon.prefix +
+                      place.data.categories.icon.suffix
                     }
-                    alt={place.categories.shortName}
+                    alt={place.data.categories.shortName}
                   />
                 )}
 
-                <small>{place.categories.shortName}</small>
+                <hr />
+                <div
+                  className="action"
+                  onClick={() => {
+                    setLoading(true);
+                    db.collection("places")
+                      .doc(place.data.id)
+                      .delete()
+                      .then(() => {
+                        console.log("Document successfully deleted!");
+                      })
+                      .then(() => {
+                        fetchPlaces();
+                        setLoading(false);
+                      })
+                      .catch((error) => {
+                        console.error("Error removing document: ", error);
+                      });
+                  }}
+                >
+                  <span>Remove</span>
+                </div>
               </div>
             );
           })

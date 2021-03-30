@@ -22,3 +22,15 @@
   justify-content: center;
   align-items: center;
 }
+
+.action {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  font-size: 14px;
+  color: red;
+}
+
+.action span:hover {
+  cursor: pointer;
+}
