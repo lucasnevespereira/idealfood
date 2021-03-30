@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Profile from "./components/profile/Profile";
 import ForgotPassword from "./components/forgot-password/ForgotPassword";
 import UpdateProfile from "./components/update-profile/UpdateProfile";
+import List from "./components/list/List";
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
           <PrivateRoute path="/" component={Main} exact />
           <PrivateRoute path="/profile" component={Profile} />
           <PrivateRoute path="/update-profile" component={UpdateProfile} />
+          <PrivateRoute path="/list" component={List} />
         </Switch>
       </AuthProvider>
     </Router>

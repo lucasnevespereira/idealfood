@@ -29,7 +29,7 @@ const Header = () => {
         <img className="header__logo" src={logo} alt="app_logo" />
       </Link>
 
-      <Link to="/" className="list-link">
+      <Link to="/list" className="list-link">
         <IconButton className={classes.root}>
           <ListIcon className="header__icon" />
           <p>My List</p>
