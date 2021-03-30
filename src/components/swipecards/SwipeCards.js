@@ -16,42 +16,28 @@ const SwipeCards = ({ places }) => {
   //   },
   // ]);
 
-  const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    if (data) {
-      setData(places);
-      setLoading(false);
-    }
-  }, [data]);
-
   return (
     <div>
-      {loading ? (
-        <div>I am loading</div>
-      ) : (
-        <div className="tinderCards__cardsContainer">
-          {data.map((data) => (
-            <TinderCard
-              className="swipe"
-              key={data.id}
-              preventSwipe={["up", "down"]}
+      <div className="tinderCards__cardsContainer">
+        {places.map((data) => (
+          <TinderCard
+            className="swipe"
+            key={data.id}
+            preventSwipe={["up", "down"]}
+          >
+            <div
+              className="card"
+              style={{
+                // backgroundImage: `url(${data.url})`,
+                backgroundColor: "black",
+              }}
             >
-              <div
-                className="card"
-                style={{
-                  // backgroundImage: `url(${data.url})`,
-                  backgroundColor: "black",
-                }}
-              >
-                <p>Test</p>
-                <h3>{data.name}</h3>
-              </div>
-            </TinderCard>
-          ))}
-        </div>
-      )}
+              <p>Test</p>
+              <h3>{data.name}</h3>
+            </div>
+          </TinderCard>
+        ))}
+      </div>
     </div>
   );
 };

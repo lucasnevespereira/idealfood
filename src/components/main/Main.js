@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
 import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
+import Loader from "../../components/loader/Loader";
 import "./Main.css";
 import SwipeCards from "../swipecards/SwipeCards";
 import axios from "axios";
 
 const Main = () => {
   let places = [];
+  const [loading, setLoading] = useState(true);
+  const [data, setData] = useState(null);
 
   useEffect(() => {
     getLocation();
@@ -20,8 +23,8 @@ const Main = () => {
         axios
           .get(url)
           .then((res) => {
+            console.log("Before => ", places);
             res.data.response.venues.forEach((venue) => {
-              console.log(venue);
               places.push(venue);
               // REQUEST TO FETCH VENUE PHOTO
               //   axios
@@ -37,6 +40,10 @@ const Main = () => {
               //       });
               //     });
             });
+
+            console.log("After => ", places);
+            setData(places);
+            setLoading(false);
           })
           .catch((e) => console.log("Error:", e));
       },
@@ -47,11 +54,18 @@ const Main = () => {
   return (
     <div className="app">
       <Header></Header>
+
       <div className="main">
-        <button className="locate" onClick={getLocation}>
+        {/* <button className="locate" onClick={getLocation}>
           Locate me
-        </button>
-        <SwipeCards places={places} />
+        </button> */}
+        {loading ? (
+          <div className="loader-wrapper">
+            <Loader />
+          </div>
+        ) : (
+          <SwipeCards places={data} />
+        )}
       </div>
       <Footer></Footer>
     </div>
